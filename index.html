@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>IF YOU KNOW 😜</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    overflow:hidden;
+}
+
+/* ===== LOCK SCREEN ===== */
+#lockScreen{
+    position:fixed;
+    top:0;left:0;
+    width:100%;height:100%;
+    background:linear-gradient(135deg,#a32020,#518fa0);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+    color:rgb(247, 242, 242);
+}
+
+.lockBox{
+    background:#c37011;
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    width:550px;
+    box-shadow:0 0 20px rgba(13, 13, 13, 0.7);
+}
+
+.lockBox input{
+    width:50%;
+    padding:10px;
+    border: #0000ce;
+    border-radius:100px;
+    margin:10px 0;
+    text-align:center;
+}
+
+.lockBox button{
+    padding:9px 15px;
+    border:none;
+    border-radius:80px;
+    cursor:pointer;
+    margin:8px;
+}
+
+.playBtn{background:#f53c3c;color:rgb(12, 11, 11);}
+.unlockBtn{background:#00cec9;color:black;}
+#error{color:#f30b0b;}
+
+/* ===== BALLOON GAME ===== */
+#gamePage{
+    display:none;
+    height:100vh;
+    background:linear-gradient(135deg,#e2353b,#fad0c4);
+    position:relative;
+    text-align:center;
+}
+
+.game-balloon{
+    position:absolute;
+    width:60px;
+    height:80px;
+    border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+    background:radial-gradient(circle at 30% 30%, #ec2222, #ff4757);
+    cursor:pointer;
+    animation:float 3s ease-in-out infinite;
+}
+
+.game-balloon.popped{display: none;}
+
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-30px);}
+}
+
+/* ===== MAIN CONTENT ===== */
+.container{
+    display:none;
+    height:100vh;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#dfc15d,#fab1a0);
+}
+
+.page{
+    display:none;
+    text-align:center;
+    background:rgba(190, 57, 57, 0.9);
+    padding:20px;
+    border-radius:20px;
+    width:90%;
+    max-width:600px;
+    box-shadow:0 0 20px rgba(0,0,0,.2);
+}
+
+.page.active{display:block;}
+h1{color:#ff6b6b;}
+
+button{
+    background:#ff6b6b;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:10px;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🔒 LOCK -->
+<div id="lockScreen">
+    <div class="lockBox">
+        <h2>🔐 Locked</h2>
+        <p id="mathQ"></p>
+        <input id="ans" placeholder="Answer">
+        <br>
+        <button class="unlockBtn" onclick="unlock()">Unlock</button>
+        <br>
+        <button class="playBtn" onclick="playMusic()">▶ Play Music</button>
+        <p id="error"></p>
+    </div>
+</div>
+
+<!-- 🎈 BALLOON GAME -->
+<div id="gamePage">
+    <h1>🎈 Pop All Balloons!</h1>
+    <p>Unlock ke baad test 😜</p>
+
+    <div class="game-balloon" style="top:100px;left:50px" onclick="pop(this)"></div>
+    <div class="game-balloon" style="top:150px;right:80px" onclick="pop(this)"></div>
+    <div class="game-balloon" style="top:250px;left:150px" onclick="pop(this)"></div>
+    <div class="game-balloon" style="top:200px;right:150px" onclick="pop(this)"></div>
+    <div class="game-balloon" style="top:300px;left:250px" onclick="pop(this)"></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+<div id="page1" class="page active">
+    <h1>Dear pyari zebra bhabi😄</h1>
+    <p>Zuni pehli bat Ap kelye mene chocolates laye he  😜  
+    or han ye to jhot he 😂</p>
+    <button onclick="nextPage()">Next</button>
+</div>
+
+<div id="page2" class="page">
+    <h1>Page 2</h1>
+    <p>Zuni, surprise!🥳 Tumhari phone ki battery fake hai – kabhi charge nahi hoti! 😂</p>
+    <button onclick="nextPage()">Next</button>
+</div>
+
+<div id="page3" class="page">
+    <h1>Page 3</h1>
+    <p>listen pagal! Tumhari saari socks ek pair ki hai – match nahi hoti! 😂😄</p>
+    <button onclick="nextPage()">Next</button>
+</div>
+
+<div id="page4" class="page">
+    <h1>Page 4</h1>
+    <p>Zuni, ek aur bat pata chali he ke tum chai me namak dal ke peeti ho ☕😉</p>
+    <button onclick="nextPage()">Next</button>
+</div>
+
+<div id="page5" class="page">
+    <h1>Page 5</h1>
+    <p>Zuni, Tumhari favorite show ka ending spoil ho gaya! 😂</p>
+    <button onclick="nextPage()">Next</button>
+</div>
+
+<div id="page6" class="page">
+    <h1>Page 6</h1>
+    <p>Zuni, acha ye batao ap apni cheze bag ke bajai fridge me kio rakti ho 🔑😜</p>
+    <button onclick="nextPage()">Next</button>
+</div>
+
+<div id="page7" class="page">
+    <h1>Page 7</h1>
+    <p>Zebraaaaa! wese ap yaha kr kya rahi ho 🛏️😄</p>
+    <button onclick="nextPage()">Next</button>
+</div>
+
+<div id="page8" class="page">
+    <h1>Page 8</h1>
+    <p>JO ap dekhna chah rahi ho me dekha bhi nahi 😜</p>
+    <button onclick="nextPage()">Next</button>
+</div>
+
+<div id="page9" class="page">
+    <h1>Page 9</h1>
+    <p>Abhi tak yaha ho? party ke baghair kuch nahi milega 😄</p>
+    <button onclick="nextPage()">Next</button>
+</div>
+
+<div id="page10" class="page">
+    <h1>Page 10</h1>
+    <p>acha ab yaaha ho to ye 🌶️ kha ke jana, thanks ki zarurat nahi 😜</p>
+    <button onclick="nextPage()">Next</button>
+</div>
+
+<div id="page11" class="page">
+    <h1>Happy Birthday pyari babhi</h1>
+    <p>
+    Happy Birthday Dear ZUNI ❤️  
+    Allah tumhein hamesha khush rakhe
+    </p>
+    <button onclick="nextPage()">Next</button>
+</div>
+
+<div id="page12" class="page">
+    <p>خوشیوں سے بھرا ہو دامن تمہارا 😊</p>
+    <button onclick="nextPage()">Next</button>
+</div>
+
+<div id="page13" class="page">
+    <p>Zuni, wish you all the best 🎂</p>
+    <button onclick="nextPage()">Next</button>
+</div>
+
+<div id="page14" class="page">
+    <p>زندگی کی بہاریں تمہارے سنگ رہیں 🌟</p>
+    <button onclick="restart()">Restart</button>
+</div>
+
+</div>
+
+<audio id="music" src="ishq.mp3" loop></audio>
+
+<script>
+/* 🎵 MUSIC */
+let music=document.getElementById("music");
+function playMusic(){ music.play(); }
+
+/* 🔢 LOCK */
+let a=2,b=23,c=8,d=13;
+let correct=a+b+c-d;
+document.getElementById("mathQ").innerText=`${a}+${b}+${c}-${d} = ?`;
+
+function unlock(){
+    let v=parseInt(document.getElementById("ans").value);
+    if(v===correct){
+        document.getElementById("lockScreen").style.display="none";
+        document.getElementById("gamePage").style.display="block";
+    }else{
+        document.getElementById("error").innerText="❌ Ghalat jawab!";
+    }
+}
+
+/* 🎈 BALLOON */
+function pop(b){
+    b.classList.add("popped");
+    if(document.querySelectorAll(".game-balloon:not(.popped)").length===0){
+        setTimeout(()=>{
+            document.getElementById("gamePage").style.display="none";
+            document.querySelector(".container").style.display="flex";
+        },800);
+    }
+}
+
+/* 📄 PAGES */
+let current=1;
+function nextPage(){
+    document.getElementById("page"+current).classList.remove("active");
+    current++;
+    if(document.getElementById("page"+current)){
+        document.getElementById("page"+current).classList.add("active");
+    }
+}
+
+function restart(){
+    document.getElementById("page"+current).classList.remove("active");
+    current=1;
+    document.getElementById("page1").classList.add("active");
+}
+</script>
+
+</body>
+</html>
